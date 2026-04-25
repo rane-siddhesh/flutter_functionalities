@@ -33,13 +33,13 @@ class _EncryptionDemoState extends State<EncryptionDemo> {
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 focusColor: Colors.white,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
                 ),
               ),
-              cursorColor: Colors.white,
+              cursorColor: Theme.of(context).colorScheme.onSecondary,
             ),
             SizedBox(height: 20),
             SizedBox(

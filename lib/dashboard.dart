@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:layout_builder/encryption_demo.dart';
 import 'package:layout_builder/layout_builder_demo.dart';
+import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
@@ -14,7 +15,11 @@ class Dashboard extends ConsumerStatefulWidget {
 }
 
 class _DashboardState extends ConsumerState<Dashboard> {
-  final items = ['Layout Builder', 'Encryption'];
+  final items = [
+    'Layout Builder',
+    'Encryption',
+    'Block Screenshot and recording',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +57,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
         color: Color(0Xff111111),
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: items.length,
+            crossAxisCount: 2,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
             mainAxisExtent: 80,
@@ -66,6 +71,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = LayoutBuilderDemo();
                   case 1:
                     destination = EncryptionDemo();
+                  case 2:
+                    destination = NoScreenshotDemo();
                 }
                 Navigator.push(
                   context,

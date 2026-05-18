@@ -6,6 +6,7 @@ import 'package:layout_builder/camera_demo.dart';
 import 'package:layout_builder/encryption_demo.dart';
 import 'package:layout_builder/isolate_demo.dart';
 import 'package:layout_builder/layout_builder_demo.dart';
+import 'package:layout_builder/location_demo.dart';
 import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
 
@@ -23,6 +24,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Block Screenshot and recording',
     'Isolate',
     'Camera',
+    'Location',
   ];
 
   @override
@@ -81,6 +83,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = IsolateDemo();
                   case 4:
                     destination = CameraDemo();
+                  case 5:
+                    destination = LocationDemo();
                 }
                 Navigator.push(
                   context,

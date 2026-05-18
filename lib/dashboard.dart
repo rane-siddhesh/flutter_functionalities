@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:layout_builder/camera_demo.dart';
 import 'package:layout_builder/encryption_demo.dart';
 import 'package:layout_builder/isolate_demo.dart';
 import 'package:layout_builder/layout_builder_demo.dart';
@@ -21,6 +22,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Encryption',
     'Block Screenshot and recording',
     'Isolate',
+    'Camera',
   ];
 
   @override
@@ -77,6 +79,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = NoScreenshotDemo();
                   case 3:
                     destination = IsolateDemo();
+                  case 4:
+                    destination = CameraDemo();
                 }
                 Navigator.push(
                   context,

@@ -42,6 +42,9 @@ dependencies:
   flutter_svg: ^2.2.4
   flutter_riverpod: ^3.3.1
   no_screenshot: ^1.1.0
+  image_picker: ^1.2.2
+  permission_handler: ^12.0.1
+  geolocator: ^14.0.1
 
 dev_dependencies:
   flutter_test:

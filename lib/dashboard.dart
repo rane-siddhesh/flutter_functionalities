@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:layout_builder/camera_demo.dart';
+import 'package:layout_builder/custom_widget/custom_widget_demo.dart';
 import 'package:layout_builder/encryption_demo.dart';
 import 'package:layout_builder/isolate_demo.dart';
 import 'package:layout_builder/layout_builder_demo.dart';
@@ -27,6 +28,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Camera',
     'Location',
     'Value Listener',
+    'Custom Widget',
   ];
 
   @override
@@ -89,6 +91,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = LocationDemo();
                   case 6:
                     destination = ValueListenableDemo();
+                  case 7:
+                    destination = CustomWidgetDemo();
                 }
                 Navigator.push(
                   context,

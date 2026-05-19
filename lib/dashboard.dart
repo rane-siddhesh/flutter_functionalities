@@ -10,6 +10,7 @@ import 'package:layout_builder/layout_builder_demo.dart';
 import 'package:layout_builder/location_demo.dart';
 import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
+import 'package:layout_builder/page_view_demo.dart';
 import 'package:layout_builder/value_listenable_demo.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
@@ -29,6 +30,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Location',
     'Value Listener',
     'Custom Widget',
+    'Page View',
   ];
 
   @override
@@ -93,6 +95,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = ValueListenableDemo();
                   case 7:
                     destination = CustomWidgetDemo();
+                  case 8:
+                    destination = PageViewDemo();
                 }
                 Navigator.push(
                   context,

@@ -9,6 +9,7 @@ import 'package:layout_builder/layout_builder_demo.dart';
 import 'package:layout_builder/location_demo.dart';
 import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
+import 'package:layout_builder/value_listenable_demo.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
   const Dashboard({super.key});
@@ -25,6 +26,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Isolate',
     'Camera',
     'Location',
+    'Value Listener',
   ];
 
   @override
@@ -85,6 +87,8 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     destination = CameraDemo();
                   case 5:
                     destination = LocationDemo();
+                  case 6:
+                    destination = ValueListenableDemo();
                 }
                 Navigator.push(
                   context,

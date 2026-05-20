@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:layout_builder/dashboard.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
+import 'package:layout_builder/route_config.dart';
 
 void main() {
   runApp(const ProviderScope(child: const MyApp()));
@@ -53,12 +54,12 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       darkTheme: darkthemeData,
       theme: themeData,
       themeMode: themeMode,
-      home: const Dashboard(),
+      routerConfig: router,
     );
   }
 }

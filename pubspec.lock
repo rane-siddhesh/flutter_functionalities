@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.13.1"
+  auto_size_text_plus:
+    dependency: "direct main"
+    description:
+      name: auto_size_text_plus
+      sha256: "21c522949ad4eadf16f5a525f348200783ebbefc02242d90624fc30279c53216"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -408,6 +416,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      sha256: "92d8cee7c57dff0a6c409c05597b460002434eccf7424a712283225b3962d03f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "17.2.3"
   google_fonts:
     dependency: "direct main"
     description:

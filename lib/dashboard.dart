@@ -1,13 +1,17 @@
+import 'package:auto_size_text_plus/auto_size_text_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:go_router/go_router.dart';
+import 'package:layout_builder/AdaptiveFontSize.dart';
 import 'package:layout_builder/camera_demo.dart';
 import 'package:layout_builder/custom_widget/custom_widget_demo.dart';
 import 'package:layout_builder/encryption_demo.dart';
 import 'package:layout_builder/isolate_demo.dart';
 import 'package:layout_builder/layout_builder_demo.dart';
 import 'package:layout_builder/location_demo.dart';
+import 'package:layout_builder/multipage/multi_page_demo.dart';
 import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
 import 'package:layout_builder/page_view_demo.dart';
@@ -31,7 +35,18 @@ class _DashboardState extends ConsumerState<Dashboard> {
     'Value Listener',
     'Custom Widget',
     'Page View',
+    'Multi page',
   ];
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    final theme = Theme.of(context);
+
+    print("didChangeDependencies called : ${theme.brightness}");
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +77,9 @@ class _DashboardState extends ConsumerState<Dashboard> {
             }),
           ),
         ],
-        backgroundColor: Color(0xff111111),
       ),
       body: Container(
         padding: EdgeInsets.all(10),
-        color: Color(0Xff111111),
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -80,28 +93,31 @@ class _DashboardState extends ConsumerState<Dashboard> {
                 late var destination;
                 switch (index) {
                   case 0:
-                    destination = LayoutBuilderDemo();
+                    destination = "layout_builder"/*LayoutBuilderDemo()*/;
                   case 1:
-                    destination = EncryptionDemo();
+                    destination = "encryption"/*EncryptionDemo()*/;
                   case 2:
-                    destination = NoScreenshotDemo();
+                    destination = "block_screenshot"/*NoScreenshotDemo()*/;
                   case 3:
-                    destination = IsolateDemo();
+                    destination = "isolate"/*IsolateDemo()*/;
                   case 4:
-                    destination = CameraDemo();
+                    destination = "camera"/*CameraDemo()*/;
                   case 5:
-                    destination = LocationDemo();
+                    destination = "location"/*LocationDemo()*/;
                   case 6:
-                    destination = ValueListenableDemo();
+                    destination = "value_listenable"/*ValueListenableDemo()*/;
                   case 7:
-                    destination = CustomWidgetDemo();
+                    destination = "custom_widget"/*CustomWidgetDemo()*/;
                   case 8:
-                    destination = PageViewDemo();
+                    destination = "pageview"/*PageViewDemo()*/;
+                  case 9:
+                    destination = "multi_page"/*MultiPageDemo()*/;
                 }
-                Navigator.push(
+               /* Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => destination),
-                );
+                );*/
+                context.pushNamed(destination, extra: destination);
               },
               child: Container(
                 padding: EdgeInsets.all(10),
@@ -111,10 +127,11 @@ class _DashboardState extends ConsumerState<Dashboard> {
                 ),
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text(
+                  child: AutoSizeText(items[index], style: TextStyle(fontSize: 20), maxLines: 2, minFontSize: 10,)
+                  /*Text(
                     items[index],
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                    style: TextStyle(color: Colors.white, fontSize: AdaptiveFontSize.getFontSize(context, 15)),
+                  )*/,
                 ),
               ),
             );

@@ -4,18 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:go_router/go_router.dart';
-import 'package:layout_builder/AdaptiveFontSize.dart';
-import 'package:layout_builder/camera_demo.dart';
-import 'package:layout_builder/custom_widget/custom_widget_demo.dart';
-import 'package:layout_builder/encryption_demo.dart';
-import 'package:layout_builder/isolate_demo.dart';
-import 'package:layout_builder/layout_builder_demo.dart';
-import 'package:layout_builder/location_demo.dart';
-import 'package:layout_builder/multipage/multi_page_demo.dart';
-import 'package:layout_builder/no_screenshot.dart';
 import 'package:layout_builder/notifier/theme_notifier.dart';
-import 'package:layout_builder/page_view_demo.dart';
-import 'package:layout_builder/value_listenable_demo.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
   const Dashboard({super.key});
@@ -45,7 +35,6 @@ class _DashboardState extends ConsumerState<Dashboard> {
     final theme = Theme.of(context);
 
     print("didChangeDependencies called : ${theme.brightness}");
-
   }
 
   @override
@@ -57,24 +46,18 @@ class _DashboardState extends ConsumerState<Dashboard> {
       appBar: AppBar(
         title: const Text(
           "Flutter Functionalities",
-          style: TextStyle(color: Colors.white),
         ),
         actionsPadding: const EdgeInsets.only(right: 20),
         actions: [
-          FlutterSwitch(
+          Switch(/*
             height: 35,
-            width: 55,
-            activeColor: Color(0xff1f1f1f),
-            inactiveColor: Colors.white,
-            inactiveIcon: SvgPicture.asset('assets/images/sun.svg'),
-            activeIcon: SvgPicture.asset('assets/images/moon.svg'),
-            inactiveToggleColor: Colors.deepPurpleAccent,
-            activeToggleColor: Colors.deepPurpleAccent,
+            width: 55,*/
+            //  inactiveThumbImage: Image(image: Svg('assets/images/sun.svg')),
+            // activeThumbImage: SvgPicture.asset('assets/images/moon.svg'),
+            inactiveThumbColor: Colors.deepPurpleAccent,
+            activeThumbColor: Colors.deepPurpleAccent,
             value: _isToggled,
-            onToggle: (val) => setState(() {
-              _isToggled = val;
-              themeNotifier.toggleTheme();
-            }),
+            onChanged: (val) => themeNotifier.toggleTheme(),
           ),
         ],
       ),
@@ -93,27 +76,37 @@ class _DashboardState extends ConsumerState<Dashboard> {
                 late var destination;
                 switch (index) {
                   case 0:
-                    destination = "layout_builder"/*LayoutBuilderDemo()*/;
+                    destination = "layout_builder"
+                    /*LayoutBuilderDemo()*/;
                   case 1:
-                    destination = "encryption"/*EncryptionDemo()*/;
+                    destination = "encryption"
+                    /*EncryptionDemo()*/;
                   case 2:
-                    destination = "block_screenshot"/*NoScreenshotDemo()*/;
+                    destination = "block_screenshot"
+                    /*NoScreenshotDemo()*/;
                   case 3:
-                    destination = "isolate"/*IsolateDemo()*/;
+                    destination = "isolate"
+                    /*IsolateDemo()*/;
                   case 4:
-                    destination = "camera"/*CameraDemo()*/;
+                    destination = "camera"
+                    /*CameraDemo()*/;
                   case 5:
-                    destination = "location"/*LocationDemo()*/;
+                    destination = "location"
+                    /*LocationDemo()*/;
                   case 6:
-                    destination = "value_listenable"/*ValueListenableDemo()*/;
+                    destination = "value_listenable"
+                    /*ValueListenableDemo()*/;
                   case 7:
-                    destination = "custom_widget"/*CustomWidgetDemo()*/;
+                    destination = "custom_widget"
+                    /*CustomWidgetDemo()*/;
                   case 8:
-                    destination = "pageview"/*PageViewDemo()*/;
+                    destination = "pageview"
+                    /*PageViewDemo()*/;
                   case 9:
-                    destination = "multi_page"/*MultiPageDemo()*/;
+                    destination = "multi_page"
+                    /*MultiPageDemo()*/;
                 }
-               /* Navigator.push(
+                /* Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => destination),
                 );*/
@@ -122,16 +115,21 @@ class _DashboardState extends ConsumerState<Dashboard> {
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color(0xff1f1f1f),
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Align(
                   alignment: Alignment.center,
-                  child: AutoSizeText(items[index], style: TextStyle(fontSize: 20), maxLines: 2, minFontSize: 10,)
+                  child: AutoSizeText(
+                    items[index],
+                    style: TextStyle(fontSize: 20, color: Theme.of(context).textTheme.bodySmall!.color),
+                    maxLines: 2,
+                    minFontSize: 10,
+                  ),
                   /*Text(
                     items[index],
                     style: TextStyle(color: Colors.white, fontSize: AdaptiveFontSize.getFontSize(context, 15)),
-                  )*/,
+                  )*/
                 ),
               ),
             );
